@@ -25,9 +25,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGB_DI_PIN      D3
 
 #ifdef RGBLIGHT_ENABLE
-#    define RGBLED_NUM 54 // Number of LEDs
+#    define RGBLED_NUM 12 // Number of LEDs
 #    define RGBLED_SPLIT \
-        { 27, 27 }
+        { 6, 6 }
 #    define RGBLIGHT_SPLIT
 #endif
 
@@ -37,6 +37,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    define RGB_MATRIX_SPLIT \
         { 27, 27 }
 #    define SPLIT_TRANSPORT_MIRROR
+#    define SPLIT_LED_STATE_ENABLE
+#    define SPLIT_LAYER_STATE_ENABLE
 #endif
 
 #define DIODE_DIRECTION COL2ROW
