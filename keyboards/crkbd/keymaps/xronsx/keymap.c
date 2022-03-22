@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include QMK_KEYBOARD_H
+#include <stdio.h>  
+#include "keymap_spanish.h"
 
 extern keymap_config_t keymap_config;
 
@@ -117,7 +119,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                  KC_NO ,LOWER ,KC_NO ,   KC_NO ,RAISE ,KC_0
                               //`--------------------'  `--------------------'
   )
-
 };
 
 // Tap Dance definitions
@@ -145,7 +146,6 @@ void matrix_init_user(void) {
 }
 
 void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max){
-/*void rgb_matrix_indicators_user(void) {*/
   #ifdef RGB_MATRIX_ENABLE
   switch (biton32(layer_state)) {
     case _RAISE:
@@ -424,39 +424,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           layer_off(_ADJUST);
         }
         return false;
-    case GAME:
-      if (record->event.pressed) {
-        layer_on(_GAME);
-        update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
-      } else {
-        layer_off(_GAME);
-        update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
-      }
-      return false;
-    case NUMPAD:
-      if (record->event.pressed) {
-        layer_on(_NUMPAD);
-        update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
-      } else {
-        layer_off(_NUMPAD);
-        update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
-      }
-      return false;
-    case MACRO1:
-        if (record->event.pressed) {
-            SEND_STRING("0baron4omega");
-            /*send_unicode_string("(ノಠ痊ಠ)ノ彡┻━┻");*/
-        } else {
-            
-        }
-        return false;
-    case MACRO2:
-        if (record->event.pressed) {
-            SEND_STRING("Ñ");
-        } else {
-            
-        }
-        return false;
     case KC_RACL:
         if (record->event.pressed) {
           my_colon_timer = timer_read();
@@ -483,6 +450,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
       #endif
       break;
+    case MACRO1:
+        if (record->event.pressed) {
+            SEND_STRING("0baron4omega");
+        } else {
+            
+        }
+        return false;
+    case MACRO2:
+        if (record->event.pressed) {
+            SEND_STRING("Ñ");
+        } else {
+            
+        }
+        return false;
   }
   return true;
 }
