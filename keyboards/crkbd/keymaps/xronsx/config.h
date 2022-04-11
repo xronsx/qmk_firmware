@@ -24,9 +24,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* Select hand configuration */
 
-#define MASTER_LEFT
-// #define MASTER_RIGHT
-// #define EE_HANDS
+//#define MASTER_LEFT
+ #define MASTER_RIGHT
+ //#define EE_HANDS
 
 // #define SSD1306OLED
 #undef USE_I2C
@@ -78,7 +78,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* Disable the animations you don't want/need.  You will need to disable a good number of these    *
  * because they take up a lot of space.  Disable until you can successfully compile your firmware. */
 #   define ENABLE_RGB_MATRIX_ALPHAS_MODS
-#    undef ENABLE_RGB_MATRIX_GRADIENT_UP_DOWN
+#   define ENABLE_RGB_MATRIX_GRADIENT_UP_DOWN
 #    undef ENABLE_RGB_MATRIX_BREATHING
 #    undef ENABLE_RGB_MATRIX_BAND_SAT
 #    undef ENABLE_RGB_MATRIX_BAND_VAL
