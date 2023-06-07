@@ -148,17 +148,17 @@ void matrix_init_user(void) {
 void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max){
   #ifdef RGB_MATRIX_ENABLE
   switch (biton32(layer_state)) {
-    case _RAISE:
-      for (int i = 0; i < DRIVER_LED_TOTAL; i++) {
-        rgb_matrix_set_color(i, 255, 0, 0);
-      }
-      break;
+    /*case _RAISE:*/
+      /*for (int i = 0; i < DRIVER_LED_TOTAL; i++) {*/
+        /*rgb_matrix_set_color(i, 250, 0, 0);*/
+      /*}*/
+      /*break;*/
 
-    case _LOWER:
-      for (int i = 0; i < DRIVER_LED_TOTAL; i++) {
-        rgb_matrix_set_color(i, 0, 0, 255);
-      }
-      break;
+    /*case _LOWER:*/
+      /*for (int i = 0; i < DRIVER_LED_TOTAL; i++) {*/
+        /*rgb_matrix_set_color(i, 0, 0, 255);*/
+      /*}*/
+      /*break;*/
 
     case _GAME:
         /*rgb_matrix_set_color_all(RGB_MAGENTA);*/
@@ -196,13 +196,13 @@ void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max){
         RGB_MATRIX_INDICATOR_SET_COLOR(47, 150, 0, 95);
       break;
 
-    default:
-        if (host_keyboard_leds() & (1<<USB_LED_CAPS_LOCK)) {
-            for (int i = 0; i < DRIVER_LED_TOTAL; i++) {
-                rgb_matrix_set_color(i, 0, 255, 0);
-        }
-       }
-      break;
+/*    default:*/
+        /*if (host_keyboard_leds() & (1<<USB_LED_CAPS_LOCK)) {*/
+            /*for (int i = 0; i < DRIVER_LED_TOTAL; i++) {*/
+                /*rgb_matrix_set_color(i, 0, 255, 0);*/
+        /*}*/
+       /*}*/
+      /*break;*/
   }
   #endif
 }
@@ -452,14 +452,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     case MACRO1:
         if (record->event.pressed) {
-            SEND_STRING("0baron4omega");
+            SEND_STRING("este puede ser un atajo");
         } else {
             
         }
         return false;
     case MACRO2:
         if (record->event.pressed) {
-            SEND_STRING("Ñ");
+            SEND_STRING("esta puede ser una macro");
         } else {
             
         }
@@ -476,6 +476,11 @@ void suspend_power_down_keymap(void) {
 
 void suspend_wakeup_init_keymap(void) {
     rgb_matrix_set_suspend_state(false);
+}
+
+void keyboard_post_init_user(void) {
+    rgblight_enable_noeeprom();                      // Habilita la iluminación RGB sin guardar en la memoria EEPROM
+    rgblight_sethsv_noeeprom(208, 255, 30);  // Establece el brillo a la mitad (valor 128)
 }
 
 #endif
